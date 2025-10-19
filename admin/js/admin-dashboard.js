@@ -1,4 +1,5 @@
 const navLinks = document.querySelectorAll('.side-nav .activities a');
+navLinks[0].classList.add('active');
 
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {

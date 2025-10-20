@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/admin-dashboard.css">
 </head>
 <body>
@@ -36,9 +37,9 @@
     <div class="side-nav">
         <div class="activities">
             <a href="admin-dashboard.html">🏠 &nbsp;&nbsp;Dashboard</a>
-            <a href="">👤 &nbsp;&nbsp;Librarians</a>
-            <a href="">👥 &nbsp;&nbsp;Members</a>
-            <a href="">📖 &nbsp;&nbsp;Books</a>
+            <a href="manage-librarians.html">👤 &nbsp;&nbsp;Librarians</a>
+            <a href="manage-members.html">👥 &nbsp;&nbsp;Members</a>
+            <a href="manage-books.html">📖 &nbsp;&nbsp;Books</a>
             <a href="">📜 &nbsp;&nbsp;Fines</a>
             <a href="">📊 &nbsp;&nbsp;Reports</a>
             <a href="">⏰ &nbsp;&nbsp;History</a>
@@ -78,6 +79,18 @@
                     <p>Total Fines Collected</p>
                     <p class="count">$5,432</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="barchart-container">
+                <p>Borrowing Trends (Last 7 Days)</p>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="piechart-container">
+                <p>Top Book Categories</p>
+                <canvas id="pieChart"></canvas>
+                <div class="piechart-label" id="pieLabel">Fiction<br>45%</div>
             </div>
         </div>
     </div>

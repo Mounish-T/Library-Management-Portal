@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #fafafa;
+  background-color: #ddd;
 }
 
 /* TOP NAVBAR */
@@ -17,7 +17,8 @@ body {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgb(186, 230, 241);
+  /* background-color: rgb(186, 230, 241); */
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,7 +76,8 @@ body {
   left: 0;
   width: 180px;
   height: 100%;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -132,7 +134,8 @@ body {
 }
 
 .books, .members, .librarians, .books-issued, .fines-collected{
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    background-color: white;
     padding: 20px;
     height: 100px;
     width: 200px;
@@ -152,4 +155,64 @@ body {
     color: black;
     font-weight: bold;
     font-size: 25px;
+}
+
+.charts{
+  display: flex;
+  width: 100%;
+}
+
+.barchart-container{
+  flex: 4;
+}
+
+.piechart-container{
+  flex: 1;
+}
+
+.barchart-container, .piechart-container{
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+canvas{
+  height: 250px !important;
+  justify-self: center;
+}
+
+#barChart{
+  width: 800px !important;
+}
+
+#pieChart{
+  padding: 10px;
+  width: 300px !important;
+}
+
+.charts p{
+  font-weight: 500; 
+  justify-self: start !important;
+}
+
+.piechart-label {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+
+.piechart-container {
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

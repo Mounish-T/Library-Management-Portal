@@ -16,9 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/admin-dashboard.css">
 </head>
 <body>
+    <!-- Top Navbar -->
     <div class="nav">
         <div class="leading">
             <img class="logo" src="../assets/LMP logo.png" alt="Logo">
@@ -30,18 +32,107 @@
              <img class="userIcon" src="assets/account_circle.png" alt="Profile image">
         </div>
     </div>
-    <hr>
+    <!-- <hr> -->
+     <!-- Side Navbar -->
     <div class="side-nav">
         <div class="activities">
-            <a href="">🏠 &nbsp;&nbsp;Dashboard</a>
-            <a href="">👤 &nbsp;&nbsp;Librarians</a>
-            <a href="">👥 &nbsp;&nbsp;Members</a>
-            <a href="">📖 &nbsp;&nbsp;Books</a>
+            <a href="admin-dashboard.html">🏠 &nbsp;&nbsp;Dashboard</a>
+            <a href="manage-librarians.html">👤 &nbsp;&nbsp;Librarians</a>
+            <a href="manage-members.html">👥 &nbsp;&nbsp;Members</a>
+            <a href="manage-books.html">📖 &nbsp;&nbsp;Books</a>
             <a href="">📜 &nbsp;&nbsp;Fines</a>
             <a href="">📊 &nbsp;&nbsp;Reports</a>
             <a href="">⏰ &nbsp;&nbsp;History</a>
         </div>
-        <button>Logout</button>
+        <button>➜] &nbsp;&nbsp;Logout</button>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+        <div class="total-collections">
+            <div class="books">
+                <div class="content">
+                    <p>Total Books</p>
+                    <p class="count">12,345</p>
+                </div>
+            </div>
+            <div class="members">
+                <div class="content">
+                    <p>Total Members</p>
+                    <p class="count">2,345</p>
+                </div>
+            </div>
+            <div class="librarians">
+                <div class="content">
+                    <p>Total Librarians</p>
+                    <p class="count">12</p>
+                </div>
+            </div>
+            <div class="books-issued">
+                <div class="content">
+                    <p>Books Issued Today</p>
+                    <p class="count">123</p>
+                </div>
+            </div>
+            <div class="fines-collected">
+                <div class="content">
+                    <p>Total Fines Collected</p>
+                    <p class="count">$5,432</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="barchart-container">
+                <p>Borrowing Trends (Last 7 Days)</p>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="piechart-container">
+                <p>Top Book Categories</p>
+                <canvas id="pieChart"></canvas>
+                <div class="piechart-label" id="pieLabel">Fiction<br>45%</div>
+            </div>
+        </div>
+
+        <div class="recent-activity">
+            <div class="recent-activity-header">
+                <p>Recent Activity</p>
+                <button class="viewAll">View All</button>
+            </div>
+            <div class="activity-list">
+                <div class="activity-set-1">
+                    <i class="fa-solid fa-arrow-left arrowback"></i>
+                    <div class="activity-history"><p class="activity-title"><b>Librarian John Doe</b> returned a book 'The Great Gatsby'.</p>
+                        <p class="activity-timestamp">3 hours ago</p>
+                    </div>
+                </div>
+                <div class="activity-set-2">
+                    <i class="fa-solid fa-arrow-left arrowback"></i>
+                    <div class="activity-history"><p class="activity-title"><b>Librarian John Doe</b> returned a book '1984'.</p>
+                        <p class="activity-timestamp">3 hours ago</p>
+                    </div>
+                </div>
+                <div class="activity-set-3">
+                    <i class="fa-solid fa-arrow-left arrowback"></i>
+                    <div class="activity-history"><p class="activity-title"><b>Librarian John Doe</b> returned a book '1984'.</p>
+                        <p class="activity-timestamp">3 hours ago</p>
+                    </div>
+                </div>
+                <div class="activity-set-4">
+                    <i class="fa-solid fa-arrow-left arrowback"></i>
+                    <div class="activity-history"><p class="activity-title"><b>Librarian John Doe</b> returned a book '1984'.</p>
+                        <p class="activity-timestamp">3 hours ago</p>
+                    </div>
+                </div>
+                <div class="activity-set-5">
+                    <i class="fa-solid fa-arrow-left arrowback"></i>
+                    <div class="activity-history">
+                        <p class="activity-title"><b>Librarian John Doe</b> returned a book '1984'.</p>
+                        <p class="activity-timestamp">3 hours ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/admin-dashboard.js"></script>

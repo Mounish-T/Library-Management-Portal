@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #fafafa;
+  background-color: #ddd;
 }
 
 /* TOP NAVBAR */
@@ -17,7 +17,8 @@ body {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgb(186, 230, 241);
+  /* background-color: rgb(186, 230, 241); */
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,7 +76,8 @@ body {
   left: 0;
   width: 180px;
   height: 100%;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,7 +104,7 @@ body {
 }
 
 .side-nav button {
-  margin: 10px;
+  margin: 60px 20px;
   padding: 10px;
   border: none;
   background-color: #dc3545;
@@ -115,4 +117,156 @@ body {
 
 .side-nav button:hover {
   background-color: #c82333;
+}
+
+.body{
+    position: relative;
+    top: 60px;
+    left: 180px;
+    width: calc(100% - 180px);
+}
+
+.total-collections{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 30px;
+}
+
+.books, .members, .librarians, .books-issued, .fines-collected{
+    /* background-color: #ddd; */
+    background-color: white;
+    padding: 20px;
+    height: 100px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.content{
+    justify-items: center;
+    justify-content: center;
+}
+
+.content p{
+    color: rgb(62, 61, 61);
+}
+
+.content .count{
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.charts{
+  display: flex;
+  width: 100%;
+}
+
+.barchart-container{
+  flex: 4;
+}
+
+.piechart-container{
+  flex: 1;
+}
+
+.barchart-container, .piechart-container{
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+canvas{
+  height: 250px !important;
+  justify-self: center;
+}
+
+#barChart{
+  width: 800px !important;
+}
+
+#pieChart{
+  padding: 10px;
+  width: 300px !important;
+}
+
+.charts p{
+  font-weight: 500; 
+  justify-self: start !important;
+}
+
+.piechart-label {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+
+.piechart-container {
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-activity{
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.recent-activity-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.recent-activity-header p{
+  font-weight: bold;
+}
+
+.viewAll{
+  padding: 8px;
+  width: 70px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* .activity-list{
+  margin: 10px;
+  padding: 10px;
+} */
+
+[class ^= 'activity-set']{
+  display: flex;
+  gap: 20px;
+  /* margin: 20px; */
+  margin: 20px 20px 30px 20px;
+}
+
+.arrowback{
+  background-color: rgb(163, 202, 204);
+  color: blue;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.activity-history{
+  margin-top: 3px;
+}
+
+.activity-timestamp{
+  font-size: small;
 }

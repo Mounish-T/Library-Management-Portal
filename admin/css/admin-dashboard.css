@@ -149,6 +149,7 @@ body {
 
 .content p{
     color: rgb(62, 61, 61);
+    padding-top: 5px;
 }
 
 .content .count{

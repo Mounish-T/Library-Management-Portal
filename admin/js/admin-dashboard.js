@@ -14,7 +14,7 @@ navLinks.forEach(link => {
 // Generate the charts
 
 // Bar-Chart
-const days = ['Ṃon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const borrowedBooks = [40, 55, 30, 175, 60, 45, 90];
 
 const maxValue = Math.max(...borrowedBooks);

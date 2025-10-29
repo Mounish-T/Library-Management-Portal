@@ -118,3 +118,97 @@ body {
 .side-nav button:hover {
   background-color: #c82333;
 }
+
+.body{
+    position: relative;
+    top: 60px;
+    left: 180px;
+    width: calc(100% - 180px);
+}
+
+.title-bar{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.title-bar p{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#add-librarian{
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  border: 1px solid #61a7f3;
+}
+
+#add-librarian:hover{
+  opacity: 0.8;
+}
+
+#add-librarian:active{
+  opacity: 0.5;
+}
+
+table{
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+table{
+  border-radius: 20px;
+}
+
+table, th, tr, td{
+  justify-self: center;
+  align-items: center;
+}
+
+th, td{
+  padding: 15px 15px 4px 15px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header{
+  border-radius: 20px;
+}
+
+th{
+  background-color: rgb(177, 174, 174);
+  padding: 18px;
+}
+
+td{
+  color: gray;
+}
+
+.ID{
+  font-weight: bold;
+  color: black;
+}
+
+[id ^= 'user-eye'], [id ^= 'user-edit'], [id ^= 'user-delete']{
+  padding: 10px;
+  cursor: pointer;
+}
+
+[id ^= 'user-eye'], [id ^= 'user-edit']{
+  color: #007BFF;
+}
+
+[id ^= 'user-delete']{
+  color: red;
+}
+
+.horizontal-line{
+  border-bottom: 1px solid black;
+}

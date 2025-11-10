@@ -137,7 +137,11 @@ body {
   font-weight: bold;
 }
 
-#add-librarian{
+button{
+  cursor: pointer;
+}
+
+#add-member{
   background-color: #007BFF;
   color: white;
   padding: 10px;
@@ -147,11 +151,11 @@ body {
   border: 1px solid #61a7f3;
 }
 
-#add-librarian:hover{
+#add-member:hover{
   opacity: 0.8;
 }
 
-#add-librarian:active{
+#add-member:active{
   opacity: 0.5;
 }
 
@@ -211,4 +215,129 @@ td{
 
 .horizontal-line{
   border-bottom: 1px solid black;
+}
+
+/* Add member css */
+dialog{
+  align-self: center;
+  justify-self: center;
+  height: 645px;
+  width: 800px;
+  border: none;
+  border-radius: 10px;
+}
+
+.dialog-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.dialog-header i{
+  padding: 5px;
+  border-radius: 20px;
+}
+
+#close-dialog{
+  cursor: pointer;
+}
+
+#close-dialog:hover{
+  background-color: #7d7b7b;
+  color: white;
+  transition: 0.3s transform ease;
+}
+
+.dialog-body{
+  padding: 20px;
+}
+
+label{
+  display: block;
+}
+
+.error-border{
+  border: 1px solid red;
+}
+
+small{
+  color: red;
+  display: none;
+  margin: 2px;
+}
+
+.uname-id{
+  display: flex;
+  justify-content: space-around;
+}
+
+.uname-id input{
+  width: 350px;
+  height: 45px;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.email-details, .pwd-field, .gender-contact-details{
+  margin: 17px;
+}
+
+.email-details input, .pwd-field input, .contact input, .gender select{
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  border-radius: 10px; 
+}
+
+.gender-contact-details{
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.gender-contact-details *{
+  flex: 1;
+}
+
+input{
+  border: 1px solid grey;
+}
+
+.actions-buttons{
+  display: flex;
+  justify-content: end;
+}
+
+.actions-buttons *{
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  /* font-weight: bold; */
+  border: none;
+}
+
+#close-dialog:active{
+  opacity: 0.6;
+}
+
+#add-member-details:active{
+  opacity: 0.6;
+}
+
+#add-member-details{
+  background-color: #007BFF;
+  color: white;
+}
+
+#add-member-details:hover{
+  opacity: 0.8;
+}
+
+#add-member-details:active{
+  opacity: 0.5;
 }

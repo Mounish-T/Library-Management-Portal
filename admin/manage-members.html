@@ -37,7 +37,7 @@
     <div class="body">
         <div class="title-bar">
             <p>Manage Members</p>
-            <button id="add-librarian">+ Add Librarian</button>
+            <button id="add-member">+ Add Member</button>
         </div>
         <div id="member-list">
             <table>
@@ -101,6 +101,60 @@
         </div>
     </div>
     
+    <dialog id="add-member-dialog">
+        <div class="dialog-header">
+                <p>Add New Member</p>
+                <i class="fa-solid fa-close" id="close-dialog"></i>
+        </div>
+        <hr>
+        <div class="dialog-body">
+
+            <div class="uname-id">
+                <div>
+                    <label for="uid">User ID</label>
+                    <input type="text" name="uid" placeholder="Enter User ID" id="uid">
+                    <small id="error-uid">User Id can't be Empty</small>
+                </div>
+                <div>
+                    <label for="uname">Username</label>
+                    <input type="text" name="username" placeholder="Enter Member's full name" id="username">
+                    <small id="error-uname">Username can't be Empty</small>
+                </div>
+            </div>
+            <div class="email-details">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter a valid email address" id="email">
+                <small id="error-email">Email can't be Empty</small>
+            </div>
+            <div class="pwd-field">
+                <label for="password">Password</label>
+                <input type="password" name="pwd" placeholder="Minimum 8 characters" id="pwd">
+                <small id="error-pwd">Password can't be Empty</small>
+            </div>
+            <div class="gender-contact-details">
+                <div class="gender">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" aria-placeholder="Select Gender">
+                        <option value="select">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <small id="error-gender">Gender can't be Empty</small>
+                </div>
+                <div class="contact">
+                    <label for="contact">Contact</label>
+                    <input type="text" name="contact" placeholder="Enter contact number" id="contact">
+                    <small id="error-contact">Contact can't be Empty</small>
+                </div>
+            </div>
+            <br>
+        </div>
+        <hr>
+        <div class="actions-buttons">
+            <button id="close-dialog">Cancel</button>
+            <button id="add-member-details">Add Member</button>
+        </div>
+    </dialog>
     <script src="js/manage-members.js"></script>
 </body>
 </html>

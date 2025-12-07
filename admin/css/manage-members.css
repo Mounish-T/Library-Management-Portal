@@ -221,10 +221,15 @@ td{
 dialog{
   align-self: center;
   justify-self: center;
-  height: 645px;
-  width: 800px;
+  /* height: 645px;
+  width: 800px; */
   border: none;
   border-radius: 10px;
+}
+
+#add-member-dialog{
+  height: 645px;
+  width: 800px;
 }
 
 .dialog-header{
@@ -341,3 +346,206 @@ input{
 #add-member-details:active{
   opacity: 0.5;
 }
+
+#member-short-profile{
+  width: 900px;
+  height: 500px;
+  padding: 10px;
+  border: none;
+  overflow: hidden;
+}
+
+#close-user-dialog{
+  position: relative;
+  left: calc(100% - 20px);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+#close-user-dialog:hover{
+  background-color: #7d7b7b;
+  color: white;
+  transition: 0.3s transform ease;
+}
+
+#close-user-dialog:active{
+  opacity: 0.6;
+}
+
+.expand-user{
+  position: relative;
+  left: calc(40% - 10px);
+  cursor: pointer;
+}
+
+.divisions{
+  display: flex;
+  gap: 10px;
+}
+
+.personal-details{
+  flex: 1;
+  /* background-color: #c3cac9; */
+  border-radius: 10px;
+  box-shadow: 5px 5px rgb(201, 199, 199); 
+  border-width: 1px 1px 1px 0px;
+  border-color: black;
+  border-style: solid;
+  height: 452px;
+}
+
+.personal-details img{
+  height: 150px;
+  width: 150px;
+}
+
+.personal-details-body{
+  padding-left: 20px;
+}
+
+.personal-details-body #role{
+  color: white;
+  width: 70px;
+  padding: 3px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #007BFF;
+}
+
+[id $= 'info']{
+  padding: 10px 0px;
+}
+
+.title{
+  color: #7d7b7b;
+  font-size: small;
+}
+
+.book-progress{
+  flex: 2;
+  /* background-color: #7d7b7b; */
+}
+
+.book-progress-header{
+  display: flex;
+  text-align: center;
+}
+
+.book-progress-header *{
+  flex: 1;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+}
+
+#borrowed-books, #reserved-books{
+  border-bottom: solid 2px black;
+  cursor: pointer;
+}
+
+.book-progress-selected{
+  border-bottom: solid 4px rgb(16, 92, 198) !important;
+  color: #007BFF;
+}
+
+.book-borrowed-body, .book-reserved-body{
+  /* background-color: #bcb9b9; */
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  height: 380px;
+  overflow: auto;
+}
+
+.book-reserved-body{
+  display: none;
+}
+
+[class ^= 'borrowed-books-'], [class ^= 'reserved-books-']{
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  border: 2px solid blue;
+  margin-bottom: 20px;
+}
+
+[class ^= 'borrowed-books-'] img, [class ^= 'reserved-books-'] img{
+  height: 50px;
+}
+
+
+.book-details{
+  padding-left: 20px;
+  /* background-color: #007BFF; */
+}
+
+.book-inner-set p{
+  font-size: 14px;
+  color: #7d7b7b;
+}
+
+/* [class ^= 'borrowed-books-'] button, [class ^= 'reserved-books-'] button{
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  height: 35px;
+  margin-right: 10px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 17px;
+} */
+
+.book-inner-set{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.book-inner-set #due{
+  color: black;
+  /* color: white; */
+  width: 120px;
+  padding: 3px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.startDue{
+  color: white;
+  background-color: green;
+}
+
+.midDue{
+  color: black;
+  background-color: rgb(209, 179, 44);
+}
+
+.overDue{
+  color: white;
+  background-color: red;
+}
+
+.book-inner-set #theme{
+  color: white;
+  background-color: #c629de;
+  width: 60px;
+  padding: 3px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* .book-inner-set button:hover {
+  opacity: 0.8;
+}
+
+.book-inner-set button:active{
+  opacity: 0.5;
+} */

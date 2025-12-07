@@ -1,3 +1,5 @@
+/* TODO:
+Get a call for book details using bookID for handling borrowed and reserved books */
 
 // Members data
 membersList = {
@@ -7,8 +9,8 @@ membersList = {
         email: "sit22ec064@sairamtap.edu.in",
         gender: "Male",
         contact: "9944554581",
-        currentlyBorrowedBooks: [],
-        currentlyReservedBooks: [],
+        currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI"],
+        currentlyReservedBooks: ["Python", "Marvell stories", "Electromagnetic Theory", "Science Fiction", "C Programming"],
         history: {
             borrowedBooks: [],
             reservedBooks: [],
@@ -21,8 +23,8 @@ membersList = {
         email: "sit22ec084@sairamtap.edu.in",
         gender: "Male",
         contact: "9944554581",
-        currentlyBorrowedBooks: [],
-        currentlyReservedBooks: [],
+        currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI", "Cloud Computing", "Mullah Stories"],
+        currentlyReservedBooks: ["Python", "Marvell stories"],
         history: {
             borrowedBooks: [],
             reservedBooks: [],
@@ -35,8 +37,8 @@ membersList = {
         email: "sit22cs540@sairamtap.edu.in",
         gender: "Female",
         contact: "9944554581",
-        currentlyBorrowedBooks: [],
-        currentlyReservedBooks: [],
+        currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI", "Spoken English"],
+        currentlyReservedBooks: ["Python", "Marvell stories"],
         history: {
             borrowedBooks: [],
             reservedBooks: [],
@@ -49,8 +51,8 @@ membersList = {
         email: "sit22ec056@sairamtap.edu.in",
         gender: "Male",
         contact: "9944554581",
-        currentlyBorrowedBooks: [],
-        currentlyReservedBooks: [],
+        currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI"],
+        currentlyReservedBooks: ["Python", "Marvell stories"],
         history: {
             borrowedBooks: [],
             reservedBooks: [],
@@ -106,7 +108,7 @@ for (let id in membersList){
             <td>
                 <div>
                     <div>
-                        <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}"></i>
+                        <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
                         <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
                     </div>
                     <div>
@@ -320,3 +322,254 @@ add_mem_listener.addEventListener('click', ()=>{
     });
 });
 
+function formatDate(dateString){
+    const parts = dateString.split("/");
+    const day = parts[0];
+    const month = parts[1];
+    const year = parts[2];
+    let formattedDate = `${year}-${month}-${day}`;
+    return formattedDate
+}
+
+// View Short Profile
+
+function handleShortProfileDialog(userId){
+    let currentUserDetails = membersList[userId];
+    console.log(currentUserDetails);
+    
+    let userPersonalDetails = `
+        <div class="personal-details">
+            <div class="personal-details-header">
+                <img src="assets/account_circle.png" alt="">
+                <i class="fa-solid fa-arrow-up-right-from-square expand-user"></i>
+            </div>
+            <div class="personal-details-body">
+                <h3>${currentUserDetails.name}</h3>
+                <p id="role">Member</p>
+                <br>
+                <div class="details-info">
+                    <h4>User Information</h4>
+                    <div id="uid-info">
+                        <p class="title">User ID</p>
+                        <p>${currentUserDetails.userId.toUpperCase()}</p>
+                    </div>
+                    <div id="email-info">
+                        <p class="title">Email</p>
+                        <p>${currentUserDetails.email}</p>
+                    </div>
+                    <div id="gender-info">
+                        <p class="title">Gender</p>
+                        <p>${currentUserDetails.gender}</p>
+                    </div>
+                    <div id="contact-info">
+                        <p class="title">Contact</p>
+                        <p>+91 ${currentUserDetails.contact}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    let borrowedBooksList = currentUserDetails.currentlyBorrowedBooks;
+    let reservedBooksList = currentUserDetails.currentlyReservedBooks;
+
+    let borrowedBooksTag = ``;
+    let count = 1;
+    for(let id in borrowedBooksList){
+        // Replace this into fetching book from DB by using this id.
+        // let book = fetchBook(id); => this id consists of the book id instead of title in memberlist
+        // by using this book attribute, put all the values required below and do it same for reserved books
+        borrowedBooksTag += `
+            <div class="borrowed-books-${count++}">
+                <img src="../assets/image.png" alt="">
+                <div class="book-inner-set">
+                    <div class="book-details">
+                        <h4>${borrowedBooksList[id]}</h4>
+                        <p>by Matt Haig</p>
+                        <p>Borrow: 15/01/2025</p>
+                    </div>
+                    <p id="due">Due: <span id="dueDate">15/02/2025</span></p>
+                </div>
+            </div>
+        `;
+    }
+
+    let reservedBooksTag = ``;
+    count = 1;
+    for(let id in reservedBooksList){
+        // Replace this into fetching book from DB by using this id.
+        // let book = fetchBook(id); => this id consists of the book id instead of title in memberlist
+        // by using this book attribute, put all the values required below
+        reservedBooksTag += `
+            <div class="reserved-books-${count++}">
+                <img src="../assets/image.png" alt="">
+                <div class="book-inner-set">
+                    <div class="book-details">
+                        <h4>${reservedBooksList[id]}</h4>
+                        <p>by Matt Haig</p>
+                        <p>Reserved on: 15/01/2025</p>
+                    </div>
+                    <p id="theme">Horror</p>
+                </div>
+            </div>
+        `;
+    }
+
+    let userProgress = `
+        <div class="book-progress">
+            <div class="book-progress-header">
+                <div id="borrowed-books" class="book-progress-selected">
+                    <p>Borrowed Books (${borrowedBooksList.length})</p>
+                </div>
+                <div id="reserved-books">
+                    <p>Reserved Books (${reservedBooksList.length})</p>
+                </div>
+            </div>
+            <div class="book-borrowed-body">
+                ${borrowedBooksTag}
+            </div>
+            <div class="book-reserved-body">
+                ${reservedBooksTag}
+            </div>
+        </div>
+    `;
+
+    userShortProfileDialog.innerHTML = `
+        <i class="fa-solid fa-close" id="close-user-dialog"></i>
+        <div class="divisions">
+            ${userPersonalDetails}
+            ${userProgress}
+        </div>
+    `;
+
+    let borrowedBooksHeader = document.getElementById('borrowed-books');
+    let reservedBooksHeader = document.getElementById('reserved-books');
+    
+    borrowedBooksHeader.addEventListener('click', ()=>{
+        let borrowedBooksBody = document.getElementsByClassName('book-borrowed-body');
+        let reservedBooksBody = document.getElementsByClassName('book-reserved-body');
+    
+        // Toggling header style
+        borrowedBooksHeader.classList.add('book-progress-selected');
+        reservedBooksHeader.classList.remove('book-progress-selected');
+    
+        // Toggling display style
+        borrowedBooksBody[0].style.display = 'block';
+        reservedBooksBody[0].style.display = 'none';
+        
+    });
+    
+    reservedBooksHeader.addEventListener('click', ()=>{
+        let borrowedBooksBody = document.getElementsByClassName('book-borrowed-body');
+        let reservedBooksBody = document.getElementsByClassName('book-reserved-body');
+    
+        // Toggling header style
+        reservedBooksHeader.classList.add('book-progress-selected');
+        borrowedBooksHeader.classList.remove('book-progress-selected');
+    
+        // Toggling display style    
+        reservedBooksBody[0].style.display = 'block';
+        borrowedBooksBody[0].style.display = 'none';
+    });
+
+    let close_dialog_listener = document.querySelector('#close-user-dialog');
+    close_dialog_listener.addEventListener('click', ()=>{
+        document.body.style.opacity = 1;
+        userShortProfileDialog.close();
+    });
+    
+    userShortProfileDialog.addEventListener('keydown', (event)=>{
+        if(event.key == 'Escape'){
+            userShortProfileDialog.close();
+            document.body.style.opacity = 1;
+        }
+    });
+
+    let dueTags = document.querySelectorAll('#due');
+    dueTags.forEach(element =>{
+        let dueDateString = element.getElementsByTagName('span')[0].textContent;
+        let formattedDueDateString = formatDate(dueDateString);
+        let borrowedDateString = formatDate("12/02/2025"); // upadate the date logic based on the book borrowed
+        let differenceDays = calculateDays(borrowedDateString, formattedDueDateString);
+        console.log(differenceDays);
+        if(differenceDays < 0){
+            element.classList.add('overDue')
+        }
+        else if(differenceDays < 5){
+            element.classList.add('midDue');
+        }
+        else{
+            element.classList.add('startDue');
+        }
+    });
+}
+
+let userEyeListener = document.querySelectorAll('[id ^= "user-eye-"]');
+let userShortProfileDialog = document.getElementById('member-short-profile');
+
+userEyeListener.forEach(element =>{
+    element.addEventListener('click', ()=>{
+        userShortProfileDialog.showModal();
+        document.body.style.opacity = 0.5;
+
+        let currentUserId = element.getAttribute('data');
+        
+        handleShortProfileDialog(currentUserId);
+
+    });
+});
+
+
+function viewShortProfile(userId){
+    console.log(userId);
+    document.getElementById('member-short-profile').showModal();
+}
+
+
+function StringToDate(dateString){
+    let dateNumber = parseInt(dateString[2]);
+    let month = parseInt(dateString[1])-1;
+    let year = parseInt(dateString[0]);
+    let date = new Date(year, month, dateNumber);
+    return date;
+}
+
+function calculateDays(startDate, endDate) {
+    
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+    console.log(startDate + " " + endDate + " " + start + " " + end);
+    
+    let timeDifference = end - start;
+    
+    let daysDifference = timeDifference / (1000 * 3600 * 24);
+    return daysDifference;
+}
+
+// let dueDateTags = document.querySelectorAll('#dueDate');
+// dueDateTags.forEach(element =>{
+
+// });
+
+// let dueDateString = StringToDate(document.getElementById('dueDate').innerText);
+// let givenDate = "12/03/2025";
+// let dueTag = document.querySelectorAll('#due');
+
+// let differenceDays = calculateDays(dueDateString, givenDate);
+// console.log(differenceDays);
+
+// if(differenceDays < 0){
+//     dueTag.forEach(element =>{
+//         element.classList.add('overDue');
+//     });
+// }
+// else if(differenceDays < 5){
+//     dueTag.forEach(element =>{
+//         element.classList.add('overDue');
+//     });
+// }
+// else{
+//     dueTag.forEach(element =>{
+//         element.classList.add('overDue');
+//     });
+// }

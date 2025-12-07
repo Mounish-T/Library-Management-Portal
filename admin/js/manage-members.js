@@ -76,7 +76,7 @@ navLinks.forEach(link => {
 });
 
 
-// Create the HTML DOCUMENT for members list
+// Create the HTML DOCUMENT for members list in table format
 let memeber_list_div = document.getElementById('member-list');
 let table_header = `
     <tr class="header">
@@ -322,6 +322,7 @@ add_mem_listener.addEventListener('click', ()=>{
     });
 });
 
+// Formatting Date from String
 function formatDate(dateString){
     const parts = dateString.split("/");
     const day = parts[0];
@@ -370,6 +371,8 @@ function handleShortProfileDialog(userId){
         </div>
     `;
 
+    // Display BorrowedBooks 
+
     let borrowedBooksList = currentUserDetails.currentlyBorrowedBooks;
     let reservedBooksList = currentUserDetails.currentlyReservedBooks;
 
@@ -393,6 +396,8 @@ function handleShortProfileDialog(userId){
             </div>
         `;
     }
+
+    // Display ReservedBooks
 
     let reservedBooksTag = ``;
     count = 1;
@@ -442,6 +447,8 @@ function handleShortProfileDialog(userId){
         </div>
     `;
 
+    // Switching header between borrowed and reserved books
+
     let borrowedBooksHeader = document.getElementById('borrowed-books');
     let reservedBooksHeader = document.getElementById('reserved-books');
     
@@ -485,6 +492,8 @@ function handleShortProfileDialog(userId){
         }
     });
 
+    // Handling date predictions
+
     let dueTags = document.querySelectorAll('#due');
     dueTags.forEach(element =>{
         let dueDateString = element.getElementsByTagName('span')[0].textContent;
@@ -504,6 +513,8 @@ function handleShortProfileDialog(userId){
     });
 }
 
+// Listening the click event to display the user details
+
 let userEyeListener = document.querySelectorAll('[id ^= "user-eye-"]');
 let userShortProfileDialog = document.getElementById('member-short-profile');
 
@@ -519,21 +530,15 @@ userEyeListener.forEach(element =>{
     });
 });
 
-
-function viewShortProfile(userId){
-    console.log(userId);
-    document.getElementById('member-short-profile').showModal();
-}
-
-
-function StringToDate(dateString){
+/* function StringToDate(dateString){
     let dateNumber = parseInt(dateString[2]);
     let month = parseInt(dateString[1])-1;
     let year = parseInt(dateString[0]);
     let date = new Date(year, month, dateNumber);
     return date;
-}
+} */
 
+// Calculate the days between start and end date
 function calculateDays(startDate, endDate) {
     
     let start = new Date(startDate);
@@ -545,31 +550,3 @@ function calculateDays(startDate, endDate) {
     let daysDifference = timeDifference / (1000 * 3600 * 24);
     return daysDifference;
 }
-
-// let dueDateTags = document.querySelectorAll('#dueDate');
-// dueDateTags.forEach(element =>{
-
-// });
-
-// let dueDateString = StringToDate(document.getElementById('dueDate').innerText);
-// let givenDate = "12/03/2025";
-// let dueTag = document.querySelectorAll('#due');
-
-// let differenceDays = calculateDays(dueDateString, givenDate);
-// console.log(differenceDays);
-
-// if(differenceDays < 0){
-//     dueTag.forEach(element =>{
-//         element.classList.add('overDue');
-//     });
-// }
-// else if(differenceDays < 5){
-//     dueTag.forEach(element =>{
-//         element.classList.add('overDue');
-//     });
-// }
-// else{
-//     dueTag.forEach(element =>{
-//         element.classList.add('overDue');
-//     });
-// }

@@ -9,16 +9,26 @@
 <body>
     <h2 class="title">LIBRARY MANAGEMENT PORTAL</h2>
     <div class="login_form">
+        
         <h1 >Login to your account</h1>
-        <p>Welcome back ! Please fill the details</p>
+        <h4>Welcome back ! Please fill the details</h4>
         <form>
             <label class="email">Email</label>
-            <input type="email" placeholder="Enter your Email">
+            <input class="email_input" type="email" placeholder="Enter your Email">
+           
+            <div class="moving">
+                <label>Libraian</label>
+                <input type="radio" name="genc" value="Libraian" id="Libraian">
+                <label>Member</label>
+                <input type="radio" name="genc" value="Member" id="Member">
+            </div>
             <label class="password">Password</label>
-            <input type="password" placeholder="Enter your Password">
+            <input class="password_input" type="password" placeholder="Enter your Password">
+            
         </form>
         <p class="forget_password">Forget Password?</p>
-        <button onclick="window.location.href = 'admin/admin-dashboard.html'">Login</button>
+        <button class="login" onclick="login()">Login</button>  
     </div>
+    <script src="./admin/js/validation.js"></script>
 </body>
 </html>

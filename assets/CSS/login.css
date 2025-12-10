@@ -57,3 +57,14 @@ button:hover {
   margin-left: 180px;
   cursor: pointer;
 }
+
+.email{
+  text-align: left;
+}
+.password,.password_input{
+  display: none;
+}
+.moving{
+  display: flex;
+  display: none;
+}

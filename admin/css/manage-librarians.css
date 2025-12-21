@@ -137,11 +137,11 @@ body {
   font-weight: bold;
 }
 
-button{
+button, i{
   cursor: pointer;
 }
 
-#add-member{
+#add-librarian{
   background-color: #007BFF;
   color: white;
   padding: 10px;
@@ -151,11 +151,11 @@ button{
   border: 1px solid #61a7f3;
 }
 
-#add-member:hover{
+#add-librarian:hover{
   opacity: 0.8;
 }
 
-#add-member:active{
+#add-librarian:active{
   opacity: 0.5;
 }
 
@@ -169,10 +169,12 @@ table{
 table, th, tr, td{
   justify-self: center;
   align-items: center;
+  /* border: 1px solid black; */
 }
 
 th, td{
-  padding: 15px;
+  /* padding: 15px 15px 15px 15px; */
+  padding: 30px 50px;
   justify-items: center;
   align-items: center;
   text-align: center;
@@ -189,6 +191,7 @@ th{
 
 td{
   color: gray;
+  text-align: center;
 }
 
 .ID{
@@ -196,12 +199,12 @@ td{
   color: black;
 }
 
-[id ^= 'user-eye'], [id ^= 'user-edit'], [id ^= 'user-delete']{
-  padding: 10px;
+[id ^= 'user-eye'], [id ^= 'user-delete']{
+  padding: 0px 15px;
   cursor: pointer;
 }
 
-[id ^= 'user-eye'], [id ^= 'user-edit']{
+[id ^= 'user-eye']{
   color: #007BFF;
 }
 
@@ -217,7 +220,7 @@ td{
     padding: 0px;
 }
 
-/* Add member css */
+/* Add librarian css */
 dialog{
   align-self: center;
   justify-self: center;
@@ -227,8 +230,9 @@ dialog{
   border-radius: 10px;
 }
 
-#add-member-dialog{
+#add-librarian-dialog{
   /* height: 645px; */
+  /* height: 545px; */
   width: 800px;
 }
 
@@ -239,7 +243,7 @@ dialog{
   font-weight: bold;
 }
 
-.dialog-header i{
+.dialog-header i, #requestCancel{
   padding: 5px;
   border-radius: 20px;
 }
@@ -248,7 +252,7 @@ dialog{
   cursor: pointer;
 }
 
-#close-dialog:hover{
+#close-dialog:hover, #requestCancel:hover{
   background-color: #7d7b7b;
   color: white;
   transition: 0.3s transform ease;
@@ -275,6 +279,7 @@ small{
 .uname-id{
   display: flex;
   justify-content: space-around;
+  gap: 25px;
 }
 
 .uname-id input{
@@ -286,11 +291,15 @@ small{
   border-radius: 10px;
 }
 
-.email-details, .pwd-field, .gender-contact-details{
-  margin: 17px;
+.email-details, .pwd-field, .gender-contact-details, .joined-date{
+  margin-top: 17px;
 }
 
-.email-details input, .pwd-field input, .contact input, .gender select{
+.email-details{
+  width: 500px;
+}
+
+.email-details input, .pwd-field input, .contact input, .gender select, .joined-date input{
   width: 100%;
   height: 45px;
   padding: 10px;
@@ -313,6 +322,10 @@ input{
   border: 1px solid grey;
 }
 
+.joined-date{
+  width: 200px;
+}
+
 .actions-buttons{
   display: flex;
   justify-content: end;
@@ -331,222 +344,225 @@ input{
   opacity: 0.6;
 }
 
-#add-member-details:active{
-  opacity: 0.6;
-}
-
-#add-member-details{
+#add-librarian-details, #edit-librarian-details{
   background-color: #007BFF;
   color: white;
 }
 
-#add-member-details:hover{
+#add-librarian-details:hover, #edit-librarian-details:hover{
   opacity: 0.8;
 }
 
-#add-member-details:active{
+#add-librarian-details:active, #edit-librarian-details:active{
   opacity: 0.5;
 }
 
-#member-short-profile{
-  width: 900px;
-  height: 500px;
-  padding: 10px;
-  border: none;
-  overflow: hidden;
+#librarian-profile{
+  display: none;
+  margin: 20px;
 }
 
-#close-user-dialog{
-  position: relative;
-  left: calc(100% - 20px);
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 20px;
+.profile-header{
+    display: flex;
+    justify-content: start;
 }
 
-#close-user-dialog:hover{
-  background-color: #7d7b7b;
-  color: white;
-  transition: 0.3s transform ease;
+.profile-header *{
+    margin: 5px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-#close-user-dialog:active{
-  opacity: 0.6;
+.profile-body{
+    display: flex;
+    /* margin: 20px; */
+    gap: 25px;
 }
 
-.expand-user{
-  position: relative;
-  left: calc(40% - 10px);
-  cursor: pointer;
+.librarian-personal-details{
+    flex: 1;
+    border-radius: 15px;
+    background-color: white;
+    /* background-color: #7d7b7b; */
 }
 
-.divisions{
-  display: flex;
-  gap: 10px;
+.personal-details-header{
+    justify-self: center;
+    margin-left: 32px;
+    margin-top: 10px;
 }
 
-.personal-details{
-  flex: 1;
-  /* background-color: #c3cac9; */
-  border-radius: 10px;
-  box-shadow: 5px 5px rgb(201, 199, 199); 
-  border-width: 1px 1px 1px 0px;
-  border-color: black;
-  border-style: solid;
-  height: 452px;
+.librarian-personal-details{
+    padding: 20px;
+    height: 430px;
 }
 
-.personal-details img{
-  height: 150px;
-  width: 150px;
+.librarian-personal-details img{
+    height: 90px;
+    width: 90px;
+}
+
+.profile-body .info{
+    /* justify-self: center; */
+    text-align: center;
+}
+
+#edit-details-button{
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    font-size: 17px;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 10px;
+    border: none;
+}
+
+.librarian-personal-details i{
+    position: relative;
+    right: 40px;
+    bottom: 10px;
+    color: white;
+    padding: 8px;
+    font-size: 15px;
+    background-color: #007BFF;
+    border-radius: 20px;
 }
 
 .personal-details-body{
-  padding-left: 20px;
+    padding-top: 10px;
 }
 
-.personal-details-body #role{
-  color: white;
-  width: 70px;
-  padding: 3px;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #007BFF;
+.basic-details-group{
+    display: flex;
+    justify-content: space-between;
 }
 
-[id $= 'info']{
-  padding: 10px 0px;
+.basic-details-title *{
+    color: grey;
+    padding: 10px;
 }
 
-.title{
-  color: #7d7b7b;
-  font-size: small;
+.basic-details-response *{
+    font-weight: bold;
+    padding: 10px;
 }
 
-.book-progress{
-  flex: 2;
-  /* background-color: #7d7b7b; */
+.librarian-activities{
+    flex: 2;
+    height: min-content;
+    border-radius: 15px;
+    background-color: white;
 }
 
-.book-progress-header{
+.activities-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 22px;
+}
+
+/* #add-activities{
+    background-color: #ff00dd;
+    color: white;
+    padding: 7px 7px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #007BFF;
+} */
+
+.edit-bar{
   display: flex;
-  text-align: center;
+  justify-content: space-between;
+  margin: 20px;
 }
 
-.book-progress-header *{
-  flex: 1;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 15px;
+.activities-header i{
+  font-size: 20px;
   padding: 5px;
+  height: 32px;
+  border-radius: 25px;
+  border: 2px solid black;
 }
 
-#borrowed-books, #reserved-books{
-  border-bottom: solid 2px black;
+.edit-bar p{
+  font-size: 17px;
+  padding: 10px;
+  color: white;
+  background-color: #dc3545;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.book-progress-selected{
-  border-bottom: solid 4px rgb(16, 92, 198) !important;
+.activities-body table{
+    border-radius: 0px;
+}
+  
+.activities-body th, .activities-body td{
+    padding: 15px 32px;
+  }
+  
+  .activities-body td{
+    color: black;
+    padding: 5px 32px;
+}
+
+#edit-request, #delete-request{
+  padding: 16px;
+  width: 15px;
+}
+
+#edit-request{
   color: #007BFF;
 }
 
-.book-borrowed-body, .book-reserved-body{
-  /* background-color: #bcb9b9; */
-  display: flex;
-  flex-direction: column;
-  /* gap: 10px; */
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  height: 380px;
-  overflow: auto;
+#delete-request{
+  color: #dc3545;
 }
 
-.book-reserved-body{
-  display: none;
+.issue{
+  color: rgb(3, 85, 92);
+  background-color: rgb(213, 242, 245);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
-[class ^= 'borrowed-books-'], [class ^= 'reserved-books-']{
-  display: flex;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
-  align-items: center;
-  border: 2px solid blue;
-  margin-bottom: 20px;
+.return{
+  color: rgb(92, 3, 89);
+  background-color: rgb(245, 213, 245);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
-[class ^= 'borrowed-books-'] img, [class ^= 'reserved-books-'] img{
-  height: 50px;
+.renew{
+  color: rgb(3, 43, 92);
+  background-color: rgb(213, 222, 245);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
-
-.book-details{
-  padding-left: 20px;
-  /* background-color: #007BFF; */
+.reject{
+  color: rgb(92, 18, 3);
+  background-color: rgb(245, 223, 213);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
-.book-inner-set p{
-  font-size: 14px;
-  color: #7d7b7b;
+.approve{
+  color: rgb(3, 92, 15);
+  background-color: rgb(213, 245, 213);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
-
-/* [class ^= 'borrowed-books-'] button, [class ^= 'reserved-books-'] button{
-  border-radius: 10px;
-  border: none;
-  padding: 5px;
-  height: 35px;
-  margin-right: 10px;
-  background-color: #007BFF;
-  color: white;
-  font-size: 17px;
-} */
-
-.book-inner-set{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-}
-
-.book-inner-set #due{
-  color: black;
-  /* color: white; */
-  width: 120px;
-  padding: 3px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.startDue{
-  color: white !important;
-  background-color: green;
-}
-
-.midDue{
-  color: black;
-  background-color: rgb(209, 179, 44);
-}
-
-.overDue{
-  color: white !important;
-  background-color: red;
-}
-
-.book-inner-set #theme{
-  color: white;
-  background-color: #c629de;
-  width: 60px;
-  padding: 3px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-/* .book-inner-set button:hover {
-  opacity: 0.8;
-}
-
-.book-inner-set button:active{
-  opacity: 0.5;
-} */

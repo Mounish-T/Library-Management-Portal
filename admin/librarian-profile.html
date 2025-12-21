@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Librarians</title>
-    <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="css/manage-librarians.css">
+    <title>Librarian Profile</title>
+    <link rel="stylesheet" href="css/librarian-profile.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
 </head>
 <body>
 
@@ -38,18 +37,7 @@
         <button>Logout</button>
     </div>
 
-    <!-- Main Body -->
-
     <div class="body">
-        <div id="view-librarians">
-            <div class="title-bar">
-                <p>Manage Librarians</p>
-                <button id="add-librarian"><i class="fa-solid fa-add"></i> Add Librarian</button>
-            </div>
-            <div id="librarian-list">
-                <!-- Display the librarians in table format -->
-            </div>
-        </div>
         <div id="librarian-profile">
             <div class="profile-header">
                 <i class="fa-solid fa-arrow-left" id="back-page"></i>
@@ -88,13 +76,11 @@
                 <div class="librarian-activities">
                     <div class="activities-header">
                         <h4>Recent Activities</h4>
-                        <!-- <button id="add-activities">New</button> -->
                         <i class="fa-solid fa-add" id="add-request"></i>
                     </div>
-                    <!-- <br> -->
                     <div class="activities-body">
                         <table>
-                            <tr>
+                            <tr class="activities-body-header">
                                 <th>ACTIVITY TYPE</th>
                                 <th>BOOK TITLE</th>
                                 <th>MEMBER NAME</th>
@@ -108,7 +94,7 @@
                                 <td>2024-05-20</td>
                                 <td>
                                     <div>
-                                        <div>
+                                        <div class="lib-actions">
                                             <i class="fa-solid fa-pen" id="edit-request"></i>
                                             <i class="fa-solid fa-trash" id="delete-request"></i>
                                         </div>
@@ -122,7 +108,7 @@
                                 <td>2024-05-20</td>
                                 <td>
                                     <div>
-                                        <div>
+                                        <div class="lib-actions">
                                             <i class="fa-solid fa-pen" id="edit-request"></i>
                                             <i class="fa-solid fa-trash" id="delete-request"></i>
                                         </div>
@@ -136,7 +122,7 @@
                                 <td>2024-05-20</td>
                                 <td>
                                     <div>
-                                        <div>
+                                        <div class="lib-actions">
                                             <i class="fa-solid fa-pen" id="edit-request"></i>
                                             <i class="fa-solid fa-trash" id="delete-request"></i>
                                         </div>
@@ -150,7 +136,7 @@
                                 <td>2024-05-20</td>
                                 <td>
                                     <div>
-                                        <div>
+                                        <div class="lib-actions">
                                             <i class="fa-solid fa-pen" id="edit-request"></i>
                                             <i class="fa-solid fa-trash" id="delete-request"></i>
                                         </div>
@@ -164,7 +150,7 @@
                                 <td>2024-05-20</td>
                                 <td>
                                     <div>
-                                        <div>
+                                        <div class="lib-actions">
                                             <i class="fa-solid fa-pen" id="edit-request"></i>
                                             <i class="fa-solid fa-trash" id="delete-request"></i>
                                         </div>
@@ -179,11 +165,10 @@
         </div>
     </div>
 
-    <!-- Dialog for Add librarian -->
-
-    <dialog id="add-librarian-dialog">
+    <!-- Dialog for Edit Librarian -->
+    <dialog id="edit-librarian-dialog">
         <div class="dialog-header">
-            <p>Add New Librarian</p>
+            <p>Edit Librarian</p>
             <i class="fa-solid fa-close" id="close-dialog"></i>
         </div>
         <hr>
@@ -192,49 +177,50 @@
             <div class="uname-id">
                 <div>
                     <label for="uid">User ID</label>
-                    <input type="text" name="uid" placeholder="Enter User ID" id="uid">
-                    <small id="error-uid">User Id can't be Empty</small>
+                    <input type="text" name="uid" placeholder="Enter User ID" id="e_uid">
+                    <small id="e_error-uid">User Id can't be Empty</small>
                 </div>
                 <div>
                     <label for="uname">Username</label>
-                    <input type="text" name="username" placeholder="Enter Librarian's full name" id="username">
-                    <small id="error-uname">Username can't be Empty</small>
+                    <input type="text" name="username" placeholder="Enter Librarian's full name" id="e_username">
+                    <small id="e_error-uname">Username can't be Empty</small>
                 </div>
             </div>
             <div class="email-details">
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Enter a valid email address" id="email">
-                <small id="error-email">Email can't be Empty</small>
-            </div>
-            <div class="pwd-field">
-                <label for="password">Password</label>
-                <input type="password" name="pwd" placeholder="Minimum 8 characters" id="pwd">
-                <small id="error-pwd">Password can't be Empty</small>
+                <input type="email" name="email" placeholder="Enter a valid email address" id="e_email">
+                <small id="e_error-email">Email can't be Empty</small>
             </div>
             <div class="gender-contact-details">
                 <div class="gender">
                     <label for="gender">Gender</label>
-                    <select name="gender" id="gender" aria-placeholder="Select Gender">
+                    <select name="gender" id="e_gender" aria-placeholder="Select Gender">
                         <option value="select">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-                    <small id="error-gender">Gender can't be Empty</small>
+                    <small id="e_error-gender">Gender can't be Empty</small>
                 </div>
                 <div class="contact">
                     <label for="contact">Contact</label>
-                    <input type="text" name="contact" placeholder="Enter contact number" id="contact">
-                    <small id="error-contact">Contact can't be Empty</small>
+                    <input type="text" name="contact" placeholder="Enter contact number" id="e_contact">
+                    <small id="e_error-contact">Contact can't be Empty</small>
                 </div>
+            </div>
+            <div class="joined-date">
+                <label for="joined">Joined Date</label>
+                <input type="date" name="date" placeholder="Joined Date" id="e_jdate">
+                <small id="e_error-date">Joined Date can't be Empty</small>
             </div>
             <!-- <br> -->
         </div>
         <hr>
         <div class="actions-buttons">
             <button id="close-dialog">Cancel</button>
-            <button id="add-librarian-details">Add Librarian</button>
+            <button id="edit-librarian-details">Update Librarian</button>
         </div>
-
     </dialog>
-    <script src="js/manage-librarians.js"></script>
+    <script src="js/librarian-profile.js"></script>
+    <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </body>

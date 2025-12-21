@@ -1,7 +1,7 @@
 /* TODO:
 Get a call for book details using bookID for handling borrowed and reserved books */
 
-// Members data
+// --- 1. MEMBERS DATA ---
 membersList = {
     "sit22ec064": {
         userId: "sit22ec064",
@@ -11,11 +11,7 @@ membersList = {
         contact: "9944554581",
         currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI"],
         currentlyReservedBooks: ["Python", "Marvell stories", "Electromagnetic Theory", "Science Fiction", "C Programming"],
-        history: {
-            borrowedBooks: [],
-            reservedBooks: [],
-            renewBooks: []
-        }
+        history: { borrowedBooks: [], reservedBooks: [], renewBooks: [] }
     },
     "sit22ec084": {
         userId: "sit22ec084",
@@ -25,11 +21,7 @@ membersList = {
         contact: "9944554581",
         currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI", "Cloud Computing", "Mullah Stories"],
         currentlyReservedBooks: ["Python", "Marvell stories"],
-        history: {
-            borrowedBooks: [],
-            reservedBooks: [],
-            renewBooks: []
-        }
+        history: { borrowedBooks: [], reservedBooks: [], renewBooks: [] }
     },
     "sit22cs540": {
         userId: "sit22cs540",
@@ -39,11 +31,7 @@ membersList = {
         contact: "9944554581",
         currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI", "Spoken English"],
         currentlyReservedBooks: ["Python", "Marvell stories"],
-        history: {
-            borrowedBooks: [],
-            reservedBooks: [],
-            renewBooks: []
-        }
+        history: { borrowedBooks: [], reservedBooks: [], renewBooks: [] }
     },
     "sit22ec056": {
         userId: "sit22ec056",
@@ -53,18 +41,15 @@ membersList = {
         contact: "9944554581",
         currentlyBorrowedBooks: ["The MidNight Library", "DSA", "The Life of PI"],
         currentlyReservedBooks: ["Python", "Marvell stories"],
-        history: {
-            borrowedBooks: [],
-            reservedBooks: [],
-            renewBooks: []
-        }
+        history: { borrowedBooks: [], reservedBooks: [], renewBooks: [] }
     },
 };
 
-
-// Handling Navbar
+// --- 2. NAVBAR HANDLING ---
 const navLinks = document.querySelectorAll('.side-nav .activities a');
-navLinks[2].classList.add('active');
+if(navLinks.length > 2) {
+    navLinks[2].classList.add('active');
+}
 
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -75,8 +60,7 @@ navLinks.forEach(link => {
     });
 });
 
-
-// Create the HTML DOCUMENT for members list in table format
+// --- 3. GENERATE MEMBER TABLE ---
 let memeber_list_div = document.getElementById('member-list');
 let table_header = `
     <tr class="header">
@@ -89,9 +73,10 @@ let table_header = `
         <th>RESERVED BOOKS</th>
         <th>ACTIONS</th>
     </tr>    
-`
+`;
 let table_list = ``;
 let count = 0;
+
 for (let id in membersList){
   let attributes = membersList[id];
   count++;
@@ -114,8 +99,8 @@ for (let id in membersList){
                     <div>
                         <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
                     </div>
-                    </div>
-                    </td>
+                </div>
+            </td>
         </tr>
     `;
     if(count != Object.keys(membersList).length){
@@ -123,16 +108,18 @@ for (let id in membersList){
         <tr class="horizontal-line">
                 <td colspan="8"></td>
             </tr>
-        `
-    };
+        `;
+    }
 };
-memeber_list_div.innerHTML =  `
-    <table>${table_header}${table_list}</table>
-`;
+memeber_list_div.innerHTML =  `<table>${table_header}${table_list}</table>`;
 
-// Add member dialog logic
+
+// --- 4. ADD MEMBER DIALOG LOGIC ---
+
 const add_mem_listener = document.getElementById('add-member');
 const add_mem_dialog_listener = document.getElementById('add-member-dialog');
+const add_mem_close_btns = document.querySelectorAll('#close-dialog');
+const submitButton = document.getElementById('add-member-details');
 
 // Reference for all input values
 let uid = document.getElementById('uid');
@@ -142,201 +129,181 @@ let pwd = document.getElementById('pwd');
 let gender = document.getElementById('gender');
 let contact = document.getElementById('contact');
 
-add_mem_listener.addEventListener('click', ()=>{
-    document.body.style.opacity = 0.5;
-    clearDialogValues();
-    add_mem_dialog_listener.showModal();
-
-    let close_dialog_listener = document.querySelectorAll('#close-dialog');
-    close_dialog_listener.forEach(element =>{
-        element.addEventListener('click', ()=>{
-            clearDialogValues();
-            add_mem_dialog_listener.close();
-            document.body.style.opacity = 1;
-        });
+function clearDialogValues(){
+    uid.value = '';
+    uname.value = '';
+    email.value = '';
+    pwd.value = '';
+    gender.value = 'select';
+    contact.value = '';
+    document.querySelectorAll('small').forEach(element =>{
+        element.style.display = 'none';
     });
-
-    add_mem_dialog_listener.addEventListener('keydown', (event)=>{
-        if(event.key == 'Escape'){
-            clearDialogValues();
-            add_mem_dialog_listener.close();
-            document.body.style.opacity = 1;
-        }
+    document.querySelectorAll('input').forEach(element =>{
+        element.classList.remove('error-border');
     });
+    document.querySelector('select').classList.remove('error-border');
+}
+
+function validateDialogValues(){
+    let validUid = true, validName  = true, validEmail = true, validPwd = true, validGender = true, validContact = true;
     
-    // Clear All values in dialog
-    function clearDialogValues(){
-        uid.value = '';
-        uname.value = '';
-        email.value = '';
-        pwd.value = '';
-        gender.value = 'select';
-        contact.value = '';
-        document.querySelectorAll('small').forEach(element =>{
-            element.style.display = 'none';
-        });
-        document.querySelectorAll('input').forEach(element =>{
-            element.classList.remove('error-border');
-        });
-        document.querySelector('select').classList.remove('error-border');
+    // UID Check
+    if(uid.value.trim() == ''){
+        document.getElementById('error-uid').style.display = 'block';
+        uid.classList.add('error-border');
+        validUid = false;
+    } else {
+        document.getElementById('error-uid').style.display = 'none';
+        uid.classList.remove('error-border');
+        validUid = true;
     }
     
-    // Validation
-    function validateDialogValues(){
-        let validUid = true, validName  = true, validEmail = true, validPwd = true, validGender = true, validContact = true;
-        if(uid.value.trim() == ''){
-            document.getElementById('error-uid').style.display = 'block';
-            uid.classList.add('error-border');
-            validUid = false;
-        }
-        else{
-            document.getElementById('error-uid').style.display = 'none';
-            uid.classList.remove('error-border');
-            validUid = true;
-        }
-        
-        if(uname.value.trim() == ''){
+    // Name Check
+    if(uname.value.trim() == ''){
+        let nameErrorTag = document.getElementById('error-uname');
+        nameErrorTag.innerText = `Username can't be Empty`;
+        nameErrorTag.style.display = 'block';
+        uname.classList.add('error-border');
+        validName = false;
+    } else {
+        const regex = /[^A-Za-z0-9]/;
+        if(regex.test(uname.value.trim())){
             let nameErrorTag = document.getElementById('error-uname');
-            nameErrorTag.innerText = `Username can't be Empty`;
+            nameErrorTag.innerText = 'Special Characters not allowed';
             nameErrorTag.style.display = 'block';
             uname.classList.add('error-border');
             validName = false;
+        } else {
+            let nameErrorTag = document.getElementById('error-uname');
+            nameErrorTag.style.display = 'none';
+            uname.classList.remove('error-border');
+            validName = true;
         }
-        else{
-            const regex = /[^A-Za-z0-9]/;
-            if(regex.test(uname.value.trim())){
-                let nameErrorTag = document.getElementById('error-uname');
-                nameErrorTag.innerText = 'Special Characters not allowed';
-                nameErrorTag.style.display = 'block';
-                uname.classList.add('error-border');
-                validName = false;
+    }
+    
+    // Email Check
+    if(email.value.trim() == ''){
+        let emailErrorTag = document.getElementById('error-email');
+        emailErrorTag.innerText = `Email can't be Empty`;
+        emailErrorTag.style.display = 'block';
+        email.classList.add('error-border');
+        validEmail = false;
+    } else if(!/^\S+@\S+\.\S+$/.test(email.value.trim())){
+        let emailErrorTag = document.getElementById('error-email');
+        emailErrorTag.innerText = `Invalid email`;
+        emailErrorTag.style.display = 'block';
+        email.classList.add('error-border');
+        validEmail = false;
+    } else {
+        let emailErrorTag = document.getElementById('error-email');
+        emailErrorTag.style.display = 'none';
+        email.classList.remove('error-border');
+        validEmail = true;
+    }
+    
+    // Password Check
+    if(pwd.value.trim() == ''){
+        let pwdErrorTag = document.getElementById('error-pwd');
+        pwdErrorTag.innerText = `Password can't be Empty`;
+        pwdErrorTag.style.display = 'block';
+        pwd.classList.add('error-border');
+        validPwd = false;
+    } else if(pwd.value.trim().length <= 8){
+        let pwdErrorTag = document.getElementById('error-pwd');
+        pwdErrorTag.innerText = 'Password length must be more than 8 characters'
+        pwdErrorTag.style.display = 'block';
+        pwd.classList.add('error-border');
+        validPwd = false;
+    } else {
+        let pwdErrorTag = document.getElementById('error-pwd');
+        pwdErrorTag.style.display = 'none';
+        pwd.classList.remove('error-border');
+        validPwd = true;
+    }
+    
+    // Gender Check
+    if(gender.value.trim() == 'select'){
+        document.getElementById('error-gender').style.display = 'block';
+        gender.classList.add('error-border');
+        validGender = false;
+    } else {
+        document.getElementById('error-gender').style.display = 'none';
+        gender.classList.remove('error-border');
+        validGender = true;
+    }
+    
+    // Contact Check
+    if(contact.value.trim() == ''){
+        let contactErrorTag = document.getElementById('error-contact');
+        contactErrorTag.innerText = `Contact can't be Empty`;
+        contactErrorTag.style.display = 'block';
+        contact.classList.add('error-border');
+        validContact = false;
+    } else {
+        let isValidContact = true;
+        for(x of contact.value.trim()){
+            if(x < '0' || x > '9'){
+                isValidContact = false;
             }
-            else{
-                let nameErrorTag = document.getElementById('error-uname');
-                nameErrorTag.style.display = 'none';
-                uname.classList.remove('error-border');
-                validName = true;
-            }
-        }
-        
-        // validate email with regex
-        if(email.value.trim() == ''){
-            let emailErrorTag = document.getElementById('error-email');
-            emailErrorTag.innerText = `Email can't be Empty`;
-            emailErrorTag.style.display = 'block';
-            email.classList.add('error-border');
-            validEmail = false;
-        }
-        
-        // else if(<Check the existing email logic>)
-        
-        else if(!/^\S+@\S+\.\S+$/.test(email.value.trim())){
-            let emailErrorTag = document.getElementById('error-email');
-            emailErrorTag.innerText = `Invalid email`;
-            emailErrorTag.style.display = 'block';
-            email.classList.add('error-border');
-            validEmail = false;
-        }
-        else{
-            let emailErrorTag = document.getElementById('error-email');
-            emailErrorTag.style.display = 'none';
-            email.classList.remove('error-border');
-            validEmail = true;
-        }
-        
-        if(pwd.value.trim() == ''){
-            let pwdErrorTag = document.getElementById('error-pwd');
-            pwdErrorTag.innerText = `Password can't be Empty`;
-            pwdErrorTag.style.display = 'block';
-            pwd.classList.add('error-border');
-            validPwd = false;
-        }
-        else if(pwd.value.trim().length <= 8){
-            let pwdErrorTag = document.getElementById('error-pwd');
-            pwdErrorTag.innerText = 'Password length must be more than 8 characters'
-            pwdErrorTag.style.display = 'block';
-            pwd.classList.add('error-border');
-            validPwd = false;
-        }
-        else{
-            let pwdErrorTag = document.getElementById('error-pwd');
-            pwdErrorTag.style.display = 'none';
-            pwd.classList.remove('error-border');
-            validPwd = true;
-        }
-        
-        if(gender.value.trim() == 'select'){
-            document.getElementById('error-gender').style.display = 'block';
-            gender.classList.add('error-border');
-            validGender = false;
-        }
-        else{
-            document.getElementById('error-gender').style.display = 'none';
-            gender.classList.remove('error-border');
-            validGender = true;
-        }
-        
-        if(contact.value.trim() == ''){
+        };
+        if(!isValidContact || contact.value.trim().length != 10){
             let contactErrorTag = document.getElementById('error-contact');
-            contactErrorTag.innerText = `Contact can't be Empty`;
+            contactErrorTag.innerText = 'Invalid contact number';
             contactErrorTag.style.display = 'block';
             contact.classList.add('error-border');
             validContact = false;
+        } else {
+            let contactErrorTag = document.getElementById('error-contact');
+            contactErrorTag.style.display = 'none';
+            contact.classList.remove('error-border');
+            validContact = true;
         }
-        else{
-            let isValidContact = true;
-            for(x of contact.value.trim()){
-                if(x < '0' || x > '9'){
-                    isValidContact = false;
-                }
-            };
-            if(!isValidContact || contact.value.trim().length != 10){
-                let contactErrorTag = document.getElementById('error-contact');
-                contactErrorTag.innerText = 'Invalid contact number';
-                contactErrorTag.style.display = 'block';
-                contact.classList.add('error-border');
-                validContact = false;
-            }
-            else{
-                let contactErrorTag = document.getElementById('error-contact');
-                contactErrorTag.style.display = 'none';
-                contact.classList.remove('error-border');
-                validContact = true;
-            }
-        }
-
-        return validUid && validName && validEmail && validPwd && validGender && validContact;
-
     }
 
-    // Handle submit
-    const submitButton = document.getElementById('add-member-details');
-    submitButton.addEventListener('click', ()=>{
-        isValid = validateDialogValues();
-        if(isValid){
-            console.log("Data sent to database");
-        }
-        else{
-            console.log("Checks the entered data");
-        }
+    return validUid && validName && validEmail && validPwd && validGender && validContact;
+}
+
+// 1. Open Dialog
+add_mem_listener.addEventListener('click', ()=>{
+    clearDialogValues();
+    add_mem_dialog_listener.showModal();
+    document.body.style.opacity = 0.5;
+});
+
+// 2. Button Close Logic
+// We only call .close(). The 'close' event listener below will handle the rest.
+add_mem_close_btns.forEach(element =>{
+    element.addEventListener('click', () => {
+        add_mem_dialog_listener.close();
     });
 });
 
-// Formatting Date from String
-function formatDate(dateString){
-    const parts = dateString.split("/");
-    const day = parts[0];
-    const month = parts[1];
-    const year = parts[2];
-    let formattedDate = `${year}-${month}-${day}`;
-    return formattedDate
-}
+// 3. Submit Button
+submitButton.addEventListener('click', ()=>{
+    let isValid = validateDialogValues();
+    if(isValid){
+        console.log("Data sent to database");
+        // add_mem_dialog_listener.close(); // Optional: close on success
+    } else {
+        console.log("Checks the entered data");
+    }
+});
 
-// View Short Profile
+// 4. THE FIX: Global 'close' event listener for Add Member
+// This fires on Escape AND on button click
+add_mem_dialog_listener.addEventListener('close', () => {
+    document.body.style.opacity = 1;
+    clearDialogValues(); 
+});
+
+
+// --- 5. VIEW SHORT PROFILE LOGIC ---
+
+let userShortProfileDialog = document.getElementById('member-short-profile');
 
 function handleShortProfileDialog(userId){
     let currentUserDetails = membersList[userId];
-    console.log(currentUserDetails);
     
     let userPersonalDetails = `
         <div class="personal-details">
@@ -372,16 +339,12 @@ function handleShortProfileDialog(userId){
     `;
 
     // Display BorrowedBooks 
-
     let borrowedBooksList = currentUserDetails.currentlyBorrowedBooks;
     let reservedBooksList = currentUserDetails.currentlyReservedBooks;
 
     let borrowedBooksTag = ``;
     let count = 1;
     for(let id in borrowedBooksList){
-        // Replace this into fetching book from DB by using this id.
-        // let book = fetchBook(id); => this id consists of the book id instead of title in memberlist
-        // by using this book attribute, put all the values required below and do it same for reserved books
         borrowedBooksTag += `
             <div class="borrowed-books-${count++}">
                 <img src="../assets/image.png" alt="">
@@ -398,13 +361,9 @@ function handleShortProfileDialog(userId){
     }
 
     // Display ReservedBooks
-
     let reservedBooksTag = ``;
     count = 1;
     for(let id in reservedBooksList){
-        // Replace this into fetching book from DB by using this id.
-        // let book = fetchBook(id); => this id consists of the book id instead of title in memberlist
-        // by using this book attribute, put all the values required below
         reservedBooksTag += `
             <div class="reserved-books-${count++}">
                 <img src="../assets/image.png" alt="">
@@ -448,7 +407,6 @@ function handleShortProfileDialog(userId){
     `;
 
     // Switching header between borrowed and reserved books
-
     let borrowedBooksHeader = document.getElementById('borrowed-books');
     let reservedBooksHeader = document.getElementById('reserved-books');
     
@@ -456,51 +414,39 @@ function handleShortProfileDialog(userId){
         let borrowedBooksBody = document.getElementsByClassName('book-borrowed-body');
         let reservedBooksBody = document.getElementsByClassName('book-reserved-body');
     
-        // Toggling header style
         borrowedBooksHeader.classList.add('book-progress-selected');
         reservedBooksHeader.classList.remove('book-progress-selected');
     
-        // Toggling display style
         borrowedBooksBody[0].style.display = 'block';
         reservedBooksBody[0].style.display = 'none';
-        
     });
     
     reservedBooksHeader.addEventListener('click', ()=>{
         let borrowedBooksBody = document.getElementsByClassName('book-borrowed-body');
         let reservedBooksBody = document.getElementsByClassName('book-reserved-body');
     
-        // Toggling header style
         reservedBooksHeader.classList.add('book-progress-selected');
         borrowedBooksHeader.classList.remove('book-progress-selected');
     
-        // Toggling display style    
         reservedBooksBody[0].style.display = 'block';
         borrowedBooksBody[0].style.display = 'none';
     });
 
+    // Close listener for the X button
+    // This just calls .close(). The global 'close' listener handles opacity.
     let close_dialog_listener = document.querySelector('#close-user-dialog');
     close_dialog_listener.addEventListener('click', ()=>{
-        document.body.style.opacity = 1;
         userShortProfileDialog.close();
-    });
-    
-    userShortProfileDialog.addEventListener('keydown', (event)=>{
-        if(event.key == 'Escape'){
-            userShortProfileDialog.close();
-            document.body.style.opacity = 1;
-        }
     });
 
     // Handling date predictions
-
     let dueTags = document.querySelectorAll('#due');
     dueTags.forEach(element =>{
         let dueDateString = element.getElementsByTagName('span')[0].textContent;
         let formattedDueDateString = formatDate(dueDateString);
-        let borrowedDateString = formatDate("12/02/2025"); // upadate the date logic based on the book borrowed
+        let borrowedDateString = formatDate("12/01/2025"); 
         let differenceDays = calculateDays(borrowedDateString, formattedDueDateString);
-        console.log(differenceDays);
+        
         if(differenceDays < 0){
             element.classList.add('overDue')
         }
@@ -514,39 +460,42 @@ function handleShortProfileDialog(userId){
 }
 
 // Listening the click event to display the user details
-
 let userEyeListener = document.querySelectorAll('[id ^= "user-eye-"]');
-let userShortProfileDialog = document.getElementById('member-short-profile');
 
 userEyeListener.forEach(element =>{
     element.addEventListener('click', ()=>{
         userShortProfileDialog.showModal();
         document.body.style.opacity = 0.5;
-
-        let currentUserId = element.getAttribute('data');
         
+        let currentUserId = element.getAttribute('data');
         handleShortProfileDialog(currentUserId);
-
     });
 });
 
-/* function StringToDate(dateString){
-    let dateNumber = parseInt(dateString[2]);
-    let month = parseInt(dateString[1])-1;
-    let year = parseInt(dateString[0]);
-    let date = new Date(year, month, dateNumber);
-    return date;
-} */
+// THE FIX: Global 'close' event listener for View Profile
+// This guarantees opacity reset on Escape key OR 'X' button
+if(userShortProfileDialog) {
+    userShortProfileDialog.addEventListener('close', () => {
+        document.body.style.opacity = 1;
+    });
+}
 
-// Calculate the days between start and end date
+// --- 6. UTILITY FUNCTIONS ---
+
+function formatDate(dateString){
+    const parts = dateString.split("/");
+    const day = parts[0];
+    const month = parts[1];
+    const year = parts[2];
+    let formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+}
+
 function calculateDays(startDate, endDate) {
-    
     let start = new Date(startDate);
     let end = new Date(endDate);
-    console.log(startDate + " " + endDate + " " + start + " " + end);
     
     let timeDifference = end - start;
-    
     let daysDifference = timeDifference / (1000 * 3600 * 24);
     return daysDifference;
 }

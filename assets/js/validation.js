@@ -27,10 +27,10 @@ function login() {
             PasswordLabel.style.display = "block";
             PasswordInput.style.display = "block";
 
-            if(document.getElementById("Libraian").checked && PasswordInput.value === "12345"){
-                window.location.href = 'manage-librarians.html';
+            if(document.getElementById("Libraian").checked && PasswordInput.value == "12345"){
+                window.location.href = 'admin/manage-librarians.html';
             }
-            if(PasswordInput.value === "12345"){
+            else if(PasswordInput.value === "12345"){
                 window.location.href = 'admin/manage-members.html';
             }
             

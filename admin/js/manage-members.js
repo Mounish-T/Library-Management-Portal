@@ -105,7 +105,7 @@ for (let id in membersList){
     `;
     if(count != Object.keys(membersList).length){
         table_list += `
-        <tr class="horizontal-line">
+            <tr class="horizontal-line">
                 <td colspan="8"></td>
             </tr>
         `;

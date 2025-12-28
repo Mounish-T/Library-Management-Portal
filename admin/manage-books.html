@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/manage-books.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="leading">
+            <img class="logo" src="../assets/LMP logo.png" alt="Logo">
+            <p class="my-1">DigiLibrary</p>
+        </div>
+        <input class="search" type="text" placeholder="🔍︎  Search...">
+        <div class="actions">
+            <i class="fa-solid fa-bell notification"></i>
+             <img class="userIcon" src="assets/account_circle.png" alt="Profile image">
+        </div>
+    </div>
+    <hr>
+    <div class="side-nav">
+        <div class="activities">
+            <a href="admin-dashboard.html">🏠 &nbsp;&nbsp;Dashboard</a>
+            <a href="manage-librarians.html">👤 &nbsp;&nbsp;Librarians</a>
+            <a href="manage-members.html">👥 &nbsp;&nbsp;Members</a>
+            <a href="manage-books.html">📖 &nbsp;&nbsp;Books</a>
+            <a href="">📜 &nbsp;&nbsp;Fines</a>
+            <a href="">📊 &nbsp;&nbsp;Reports</a>
+            <a href="">⏰ &nbsp;&nbsp;History</a>
+        </div>
+        <button>Logout</button>
+    </div>
+    <div class="body">
+        <div class="title-bar">
+            <p>Manage Books</p>
+            <button class="btn btn-primary" id="add-book"><i class="fa-solid fa-add"></i> Add Book</button>
+        </div>
+        <div id="book-list">
+            <!-- <div class="container-fluid text-center">
+                <div class="row bg-light justify-content-center m-3 rounded-3">
+                    <div class="row grid-header fw-bold p-3 rounded-top-3">
+                       <div class="col">Book ID</div>
+                       <div class="col">Book Name</div>
+                       <div class="col">Author</div>
+                       <div class="col">Category</div>
+                       <div class="col">Total Copies</div>
+                       <div class="col">Available Copies</div>
+                       <div class="col">Actions</div>
+                   </div>
+                   <div class="row p-3 align-items-center">
+                       <div class="col fw-bold">#12345</div>
+                       <div class="col">Java Programming</div>
+                       <div class="col">Sathish</div>
+                       <div class="col">Programming</div>
+                       <div class="col">15</div>
+                       <div class="col">10</div>
+                       <div class="col">
+                           <div>
+                               <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
+                               <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
+                           </div>
+                           <div>
+                               <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
+                           </div>
+                       </div>
+                   </div>
+                   <hr class="border border-secondary opacity-100">
+                   <div class="row px-3 pb-3 align-items-center">
+                       <div class="col fw-bold">#12345</div>
+                       <div class="col">Java Programming</div>
+                       <div class="col">Sathish</div>
+                       <div class="col">Programming</div>
+                       <div class="col">15</div>
+                       <div class="col">10</div>
+                       <div class="col">
+                           <div>
+                               <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
+                               <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
+                           </div>
+                           <div>
+                               <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-secondary opacity-100">
+                    <div class="row px-3 pb-3 align-items-center">
+                       <div class="col fw-bold">#12345</div>
+                       <div class="col">Java Programming</div>
+                       <div class="col">Sathish</div>
+                       <div class="col">Programming</div>
+                       <div class="col">15</div>
+                       <div class="col">10</div>
+                       <div class="col">
+                           <div>
+                               <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
+                               <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
+                           </div>
+                           <div>
+                               <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-secondary opacity-100">
+                    <div class="row px-3 pb-3 align-items-center">
+                        <div class="col fw-bold">#12345</div>
+                        <div class="col">Java Programming</div>
+                        <div class="col">Sathish</div>
+                        <div class="col">Programming</div>
+                        <div class="col">15</div>
+                        <div class="col">10</div>
+                        <div class="col">
+                           <div>
+                               <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
+                               <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
+                           </div>
+                           <div>
+                               <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-secondary opacity-100">
+                    <div class="row px-3 pb-3 align-items-center">
+                        <div class="col fw-bold">#12345</div>
+                        <div class="col">Java Programming</div>
+                        <div class="col">Sathish</div>
+                       <div class="col">Programming</div>
+                       <div class="col">15</div>
+                       <div class="col">10</div>
+                       <div class="col">
+                           <div>
+                               <i class="fa-solid fa-eye" id="user-eye-${attributes.userId}" data="${attributes.userId}"></i>
+                               <i class="fa-solid fa-pen" id="user-edit-${attributes.userId}"></i>
+                           </div>
+                           <div>
+                               <i class="fa-solid fa-trash" id="user-delete-${attributes.userId}"></i>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="col text-start">Showing <b>1-8</b> of <b>100</b> results</p>
+                        <nav aria-label="Manage-pages" class="col">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item"><a href="#" class="page-link text-secondary disabled">Previous</a></li>
+                                <li class="page-item active">
+                                <a class="page-link" href="#" aria-current="page">1</a>
+                                </li>
+                                <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link text-secondary" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <br>      -->
+        </div>
+    </div>
+
+    <!-- Dialog for add book -->
+     <dialog id="addBookDialog">
+        <div class="dialog-header">
+            <strong>Add New Book</strong>
+            <i class="fa-solid fa-close close-icon" id="close-dialog"></i>
+        </div>
+        <hr>
+        <div class="dialog-body">
+            <form>
+                <div class="bname-id">
+                    <div>
+                        <label for="bid">Book ID</label>
+                        <input type="text" name="bid" placeholder="Enter Book ID" id="bid">
+                        <small id="error-bid">Book Id can't be Empty</small>
+                    </div>
+                    <div>
+                        <label for="bname">Book Name</label>
+                        <input type="text" name="bookname" placeholder="Enter Book name" id="bookname">
+                        <small id="error-bname">Book name can't be Empty</small>
+                    </div>
+                </div>
+                <br>
+                <div class="author-publisher">
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" name="author" placeholder="Enter Author name" id="author-name">
+                        <small id="error-author">Author name can't be Empty</small>
+                    </div>
+                    <div>
+                        <label for="publisher">Publisher</label>
+                        <input type="text" name="publisher" placeholder="Enter Publisher name" id="publisher">
+                        <small id="error-publisher">Publisher name can't be Empty</small>
+                    </div>
+                </div>
+                <br>
+                <div class="year-edition">
+                    <div>
+                        <label for="year">Year</label>
+                        <input type="number" name="year" placeholder="YYYY" id="year">
+                        <small id="error-year">Year can't be Empty</small>
+                    </div>
+                    <div>
+                        <label for="edition">Edition</label>
+                        <input type="text" name="edition" placeholder="Enter Edition" id="edition">
+                        <small id="error-edition">Edition can't be Empty</small>
+                    </div>
+                </div>
+                <br>
+                <div class="cat-lang">
+                    <div class="category">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" aria-placeholder="Select Category">
+                            <option value="select">Select Category</option>
+                            <option value="classic">Classic</option>
+                            <option value="programming">Programming</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="horror">Horror</option>
+                        </select>
+                        <small id="error-category">Gender can't be Empty</small>
+                    </div>
+                    <div class="lang">
+                        <label for="lang">Language</label>
+                        <select name="lang" id="lang" aria-placeholder="Select Language">
+                            <option value="select">Select Language</option>
+                            <option value="tamil">Tamil</option>
+                            <option value="english">English</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="hindi">Hindi</option>
+                        </select>
+                        <small id="error-lang">Language can't be Empty</small>
+                    </div>
+                </div>
+                <br>
+                <div class="tot-avail-copies">
+                    <div>
+                        <label for="tot">Total Copies</label>
+                        <input type="number" name="tot" placeholder="0" id="tot-copies">
+                        <small id="error-tot-copies">Total Copies can't be Empty</small>
+                    </div>
+                    <div>
+                        <label for="avail">Available Copies</label>
+                        <input type="number" name="edition" placeholder="0" id="avail-copies">
+                        <small id="error-avail-copies">Available Copies can't be Empty</small>
+                    </div>
+                </div>
+            </form>
+            <!-- <hr> -->
+            <div class="actions-buttons">
+                <button class="close-btn" id="close-dialog">Cancel</button>
+                <button class="btn btn-primary" id="add-member-details">Add Book</button>
+            </div>
+        </div>
+     </dialog>
+
+    <!-- View Books -->
+    <dialog id="viewBook">
+        <!-- <div class="p-3 align-items-center d-flex justify-content-between bg-info bg-opacity-25">
+             <div>
+                 <p class="h2 fw-bold text-primary">The Hobbit</p>
+                 <p class="h6 text-dark">Book Details</p>
+             </div>
+            <i class="fa-solid fa-close close-icon" id="close-viewBook-dialog"></i>
+        </div>
+        <div class="px-3 pt-3">
+            <div class="d-flex justify-content-start">
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Book ID</p>
+                    <p>#12345</p>
+                </div>
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Author</p>
+                    <p>Sathish</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start">
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Publisher</p>
+                    <p>Sura</p>
+                </div>
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Year</p>
+                    <p>2027</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start">
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Edition</p>
+                    <p>2<sup>nd</sup></p>
+                </div>
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Category</p>
+                    <p>Classic</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start">
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Language</p>
+                    <p>English</p>
+                </div>
+                <div class="w-50 mx-2 pt-2 ps-2 border-top">
+                    <p class="h6 text-secondary">Total Copies</p>
+                    <p>20</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start border-top">
+                <div class="w-50 mx-2 pt-2 ps-2">
+                    <p class="h6 text-secondary">Available Copies</p>
+                    <p>15</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="m-3 text-end">
+            <button class="btn btn-primary" id="close-viewBook-dialog">Close</button>
+        </div>
+        <br> -->
+    </dialog>
+    
+     <script src="js/manage-books.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
+</body>
+</html>

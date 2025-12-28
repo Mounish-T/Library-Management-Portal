@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Librarians</title>
+    <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/manage-librarians.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <div class="nav">
+        <div class="leading">
+            <img class="logo" src="../assets/LMP logo.png" alt="Logo">
+            <p>DigiLibrary</p>
+        </div>
+        <input class="search" type="text" placeholder="🔍︎  Search...">
+        <div class="actions">
+            <i class="fa-solid fa-bell notification"></i>
+             <img class="userIcon" src="assets/account_circle.png" alt="Profile image">
+        </div>
+    </div>
+    <hr>
+
+    <!-- Side navigation Bar -->
+    <div class="side-nav">
+        <div class="activities">
+            <a href="admin-dashboard.html">🏠 &nbsp;&nbsp;Dashboard</a>
+            <a href="manage-librarians.html">👤 &nbsp;&nbsp;Librarians</a>
+            <a href="manage-members.html">👥 &nbsp;&nbsp;Members</a>
+            <a href="manage-books.html">📖 &nbsp;&nbsp;Books</a>
+            <a href="">📜 &nbsp;&nbsp;Fines</a>
+            <a href="">📊 &nbsp;&nbsp;Reports</a>
+            <a href="">⏰ &nbsp;&nbsp;History</a>
+        </div>
+        <button>Logout</button>
+    </div>
+
+    <!-- Main Body -->
+
+    <div class="body">
+        <div id="view-librarians">
+            <div class="title-bar">
+                <p>Manage Librarians</p>
+                <button id="add-librarian"><i class="fa-solid fa-add"></i> Add Librarian</button>
+            </div>
+            <div id="librarian-list">
+                <!-- Display the librarians in table format -->
+            </div>
+        </div>
+        <div id="librarian-profile">
+            <div class="profile-header">
+                <i class="fa-solid fa-arrow-left" id="back-page"></i>
+                <h3>Librarian Profile</h3>
+            </div>
+            <br>
+            <div class="profile-body">
+                <div class="librarian-personal-details">
+                    <div class="personal-details-header">
+                        <img src="assets/account_circle.png" alt="">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <div class="info">
+                        <h2>Alex Doe</h2>
+                        <p>alex.doe@library.com</p>
+                        <button id="edit-details-button">✏️ Edit Profile</button>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="personal-details-body">
+                        <h4>Librarian Information</h4>
+                        <div class="basic-details-group">
+                            <div class="basic-details-title">
+                                <p>Gender</p>
+                                <p>Contact</p>
+                                <p>Joined Date</p>
+                            </div>
+                            <div class="basic-details-response">
+                                <p>Male</p>
+                                <p>9944554581</p>
+                                <p>15 Jan 2022</p>
+                            </div>                      
+                        </div>
+                    </div>
+                </div>
+                <div class="librarian-activities">
+                    <div class="activities-header">
+                        <h4>Recent Activities</h4>
+                        <!-- <button id="add-activities">New</button> -->
+                        <i class="fa-solid fa-add" id="add-request"></i>
+                    </div>
+                    <!-- <br> -->
+                    <div class="activities-body">
+                        <table>
+                            <tr>
+                                <th>ACTIVITY TYPE</th>
+                                <th>BOOK TITLE</th>
+                                <th>MEMBER NAME</th>
+                                <th>DATE</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                            <tr>
+                                <td><p class="issue">Issue</p></td>
+                                <td>The Midnight Library</td>
+                                <td>Jane Smith</td>
+                                <td>2024-05-20</td>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <i class="fa-solid fa-pen" id="edit-request"></i>
+                                            <i class="fa-solid fa-trash" id="delete-request"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p class="return">Return</p></td>
+                                <td>The Midnight Library</td>
+                                <td>Jane Smith</td>
+                                <td>2024-05-20</td>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <i class="fa-solid fa-pen" id="edit-request"></i>
+                                            <i class="fa-solid fa-trash" id="delete-request"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p class="renew">Renew</p></td>
+                                <td>The Midnight Library</td>
+                                <td>Jane Smith</td>
+                                <td>2024-05-20</td>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <i class="fa-solid fa-pen" id="edit-request"></i>
+                                            <i class="fa-solid fa-trash" id="delete-request"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p class="reject">Reject</p></td>
+                                <td>The Midnight Library</td>
+                                <td>Jane Smith</td>
+                                <td>2024-05-20</td>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <i class="fa-solid fa-pen" id="edit-request"></i>
+                                            <i class="fa-solid fa-trash" id="delete-request"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p class="approve">Approve</p></td>
+                                <td>The Midnight Library</td>
+                                <td>Jane Smith</td>
+                                <td>2024-05-20</td>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <i class="fa-solid fa-pen" id="edit-request"></i>
+                                            <i class="fa-solid fa-trash" id="delete-request"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dialog for Add librarian -->
+
+    <dialog id="add-librarian-dialog">
+        <div class="dialog-header">
+            <p>Add New Librarian</p>
+            <i class="fa-solid fa-close" id="close-dialog"></i>
+        </div>
+        <hr>
+        <div class="dialog-body">
+
+            <div class="uname-id">
+                <div>
+                    <label for="uid">User ID</label>
+                    <input type="text" name="uid" placeholder="Enter User ID" id="uid">
+                    <small id="error-uid">User Id can't be Empty</small>
+                </div>
+                <div>
+                    <label for="uname">Username</label>
+                    <input type="text" name="username" placeholder="Enter Librarian's full name" id="username">
+                    <small id="error-uname">Username can't be Empty</small>
+                </div>
+            </div>
+            <div class="email-details">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter a valid email address" id="email">
+                <small id="error-email">Email can't be Empty</small>
+            </div>
+            <div class="pwd-field">
+                <label for="password">Password</label>
+                <input type="password" name="pwd" placeholder="Minimum 8 characters" id="pwd">
+                <small id="error-pwd">Password can't be Empty</small>
+            </div>
+            <div class="gender-contact-details">
+                <div class="gender">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" aria-placeholder="Select Gender">
+                        <option value="select">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <small id="error-gender">Gender can't be Empty</small>
+                </div>
+                <div class="contact">
+                    <label for="contact">Contact</label>
+                    <input type="text" name="contact" placeholder="Enter contact number" id="contact">
+                    <small id="error-contact">Contact can't be Empty</small>
+                </div>
+            </div>
+            <!-- <br> -->
+        </div>
+        <hr>
+        <div class="actions-buttons">
+            <button id="close-dialog">Cancel</button>
+            <button id="add-librarian-details">Add Librarian</button>
+        </div>
+
+    </dialog>
+    <script src="js/manage-librarians.js"></script>
+</body>

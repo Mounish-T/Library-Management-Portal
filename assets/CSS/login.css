@@ -1,70 +1,60 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  background: #f0f2f5;
-  font-family: Arial, sans-serif;
-}
-/* Page title */
-.title {
-  margin-bottom: 20px;
-  color:#333333;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ddd;
 }
 
-/* Login box */
-.login_form {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 300px;
-  text-align: center;
+.logo{
+  height: 150px;
+  width: 150px;
 }
 
-/* Inputs */
-.login_form input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0 16px 0;
+.email {
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
-/* Button */
-button {
+.password-wrapper {
+  position: relative;
   width: 100%;
-  padding: 10px;
-  background:blue;
-  color: white;
-  border: none;
+}
+
+.password-input {
+  width: 100%;
+  outline: none;
+  padding: 10px 40px 10px 10px;
   border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#pwd-visibility {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
   cursor: pointer;
-  margin-top: 10px;
+  color: #666;
 }
 
-button:hover {
-  opacity: 0.9;
+#pwd-visibility:hover {
+  color: #000;
 }
 
-/* Small text */
-.forget_password{
-  font-size: 14px;
-  color:blue;
-  margin-top: 5px;
-  margin-left: 180px;
-  cursor: pointer;
-}
-
-.email{
-  text-align: left;
-}
-.password,.password_input{
+#pwd-block, #role-block, #forgot-block{
   display: none;
 }
-.moving{
-  display: flex;
+
+.error-border{
+  border: 1px solid red;
+}
+
+small{
   display: none;
 }

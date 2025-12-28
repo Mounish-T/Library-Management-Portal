@@ -3,32 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIBRARY MANAGEMENT PORTAL</title>
+    <title>DigiLibrary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/CSS/login.css">
 </head>
 <body>
-    <h2 class="title">LIBRARY MANAGEMENT PORTAL</h2>
-    <div class="login_form">
-        
-        <h1 >Login to your account</h1>
-        <h4>Welcome back ! Please fill the details</h4>
-        <form>
-            <label class="email">Email</label>
-            <input class="email_input" type="email" placeholder="Enter your Email">
-           
-            <div class="moving">
-                <label>Libraian</label>
-                <input type="radio" name="genc" value="Libraian" id="Libraian">
-                <label>Member</label>
-                <input type="radio" name="genc" value="Member" id="Member">
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <img src="assets/LMP logo with tagline.png" class="logo" alt="Logo">
+            <p class="h3 fw-bold text-center">Library Management Portal</p>
+            <div class="container px-5 py-4 bg-light text-center rounded" style="width: 500px;">
+                <p class="h2">Login to your Account</p>
+                <p class="text-secondary">Welcome back! Please enter your details</p>
+                <form>
+                    <div class="my-3 text-start" id="email-block">
+                        <label for="Email" class="text-start fw-bold">Email</label>
+                        <input type="text" class="w-100 p-2 rounded email" id="email-field" style="outline: none;" placeholder="Enter Email" aria-label="Enter Password">
+                        <small class="text-danger" id="error-email">Email can't be Empty</small>
+                    </div>
+                    <div class="my-3 text-start" id="pwd-block">
+                        <label for="Password" class="text-start fw-bold">Password</label>
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                class="password-input"
+                                placeholder="Enter Password"
+                                aria-label="Enter Password"
+                                id="pwd-field"
+                            >
+                            <i class="fa-solid fa-eye" id="pwd-visibility"></i>
+                        </div>
+                        <small class="text-danger" id="error-pwd">Password can't be Empty</small>
+                    </div>
+                    <div class="my-3 text-start" id="role-block">
+                        <div class="text-end" id="forgot-blockk">
+                            <p class="btn text-primary fw-bold">Forgot Password</p>
+                        </div>
+                        <label for="Role" class="text-start fw-bold">Role</label>
+                        <div class="d-flex">
+                            <div class="w-50">
+                                <input type="radio" name="role" value="librarian">
+                                <label for="Librarian">Librarian</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="role" value="member">
+                                <label for="Member">Member</label>
+                            </div>
+                        </div>
+                        <small class="text-danger" id="error-role">Role can't be Empty</small>
+                    </div>
+                </form>
+                <div>
+                    <button class="btn btn-primary w-100 fw-bold" id="proceed">Proceed</button>
+                </div>
             </div>
-            <label class="password">Password</label>
-            <input class="password_input" type="password" placeholder="Enter your Password">
-            
-        </form>
-        <p class="forget_password">Forget Password?</p>
-        <button class="login" onclick="login()">Login</button>  
+        </div>
     </div>
-    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/aa8d9a6dd9.js" crossorigin="anonymous"></script>
 </body>
 </html>

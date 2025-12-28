@@ -108,10 +108,16 @@ submitBtn.addEventListener('click', ()=>{
             if(isPwdShow){
                 let isValidPwd = validatePwd();
                 let isValidRole = validateRole();
-                let isValidMember = isValidPwd && isValidRole;
-                // Go to member dashboard page here
-                if(isValidMember){
-                    window.location.href = 'admin/manage-members.html';
+                let isValidUser = isValidPwd && isValidRole;
+                // Go to librarian/member dashboard page here
+                let roleTag = document.querySelector('input[name="role"]:checked');
+                if(isValidUser){                    
+                    if(roleTag.value == 'librarian'){
+                        window.location.href = 'admin/manage-librarians.html';
+                    }
+                    else{
+                        window.location.href = 'admin/manage-members.html';
+                    }
                 }
             }
             else{

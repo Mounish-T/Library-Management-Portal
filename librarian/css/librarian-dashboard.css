@@ -74,7 +74,7 @@ body {
   position: fixed;
   top: 60px; /* below top nav */
   left: 0;
-  width: 210px;
+  width: 225px;
   height: 100%;
   /* background-color: #f1f1f1; */
   background-color: white;
@@ -123,6 +123,66 @@ body {
 .body{
     position: relative;
     top: 60px;
-    left: 210px;
-    width: calc(100% - 180px);
+    left: 225px;
+    width: calc(100% - 225px);
+}
+
+.grid-header{
+  background-color: rgb(177, 174, 174);
+}
+
+/* Set request type color */
+.issue{
+  color: rgb(3, 85, 92);
+  background-color: rgb(213, 242, 245);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  justify-self: center;
+  width: 65px;
+  border-radius: 20px;
+}
+
+.return{
+  color: rgb(92, 3, 89);
+  background-color: rgb(245, 213, 245);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px 8px;
+  width: 65px;
+  border-radius: 20px;
+  justify-self: center;
+}
+
+.renew{
+  color: rgb(3, 43, 92);
+  background-color: rgb(213, 222, 245);
+  font-weight: bold;
+  font-size: 15px;
+  width: 65px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  justify-self: center;
+}
+
+.reject{
+  color: rgb(92, 18, 3);
+  background-color: rgb(245, 223, 213);
+  font-weight: bold;
+  font-size: 15px;
+  width: 65px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  justify-self: center;
+}
+
+.approve{
+  color: rgb(3, 92, 15);
+  background-color: rgb(213, 245, 213);
+  font-weight: bold;
+  font-size: 15px;
+  width: 80px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  justify-self: center;
 }

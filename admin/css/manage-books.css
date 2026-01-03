@@ -136,64 +136,6 @@ body {
   font-size: 22px;
   font-weight: bold;
 }
-
-/* table{
-  border-collapse: collapse;
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-table, th, tr, td{
-  justify-self: center;
-  align-items: center;
-}
-
-th, td{
-  padding: 10px 50px;
-  justify-items: center;
-  align-items: center;
-  text-align: center;
-}
-
-.header{
-  border-radius: 20px;
-}
-
-th{
-  background-color: rgb(177, 174, 174);
-  padding: 18px;
-}
-
-td{
-  color: gray;
-}
-
-.ID{
-  font-weight: bold;
-  color: black;
-}
-
-[id ^= 'user-eye'], [id ^= 'user-edit'], [id ^= 'user-delete']{
-  padding: 10px;
-  cursor: pointer;
-}
-
-[id ^= 'user-eye'], [id ^= 'user-edit']{
-  color: #007BFF;
-}
-
-[id ^= 'user-delete']{
-  color: red;
-}
-
-.horizontal-line{
-  border-bottom: 1px solid black;
-  }
-  
-  .horizontal-line td{
-    padding: 0px;
-    } */
     
 [id ^= 'user-eye'], [id ^= 'user-edit'], [id ^= 'user-delete']{
   padding: 10px;

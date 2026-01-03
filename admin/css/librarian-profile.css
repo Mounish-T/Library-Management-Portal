@@ -234,17 +234,6 @@ button, i{
     font-size: 22px;
 }
 
-/* #add-activities{
-    background-color: #ff00dd;
-    color: white;
-    padding: 7px 7px;
-    border-radius: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid #007BFF;
-} */
-
 .edit-bar{
   display: flex;
   justify-content: space-between;
@@ -309,6 +298,7 @@ button, i{
   color: #dc3545;
 }
 
+/* Set request type color */
 .issue{
   color: rgb(3, 85, 92);
   background-color: rgb(213, 242, 245);
